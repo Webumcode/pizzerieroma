@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzerie Roma - Autentická italská pizza v Praze</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<base target="_blank">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="oven-container">
+            <div class="oven-fire"></div>
+            <div class="pizza-animation">
+                <div class="pizza-base"></div>
+                <div class="ingredient tomato" data-delay="0"></div>
+                <div class="ingredient mozzarella" data-delay="0.5"></div>
+                <div class="ingredient olive" data-delay="1"></div>
+                <div class="ingredient basil" data-delay="1.5"></div>
+                <div class="ingredient spice" data-delay="2"></div>
+            </div>
+            <div class="loading-text">
+                <span>P</span><span>i</span><span>z</span><span>z</span><span>e</span><span>r</span><span>i</span><span>e</span>
+                <span class="space"></span>
+                <span>R</span><span>o</span><span>m</span><span>a</span>
+            </div>
+            <div class="loading-subtitle">Připravujeme vaši pizzu...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-pizza-slice"></i>
+                <span>Pizzerie Roma</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="nav-link">Domů</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#about" class="nav-link">O nás</a></li>
+                <li><a href="#reviews" class="nav-link">Recenze</a></li>
+                <li><a href="#contact" class="nav-link">Kontakt</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#order" class="btn btn-order">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="#reservation" class="btn btn-reservation">Rezervace</a>
+                <button class="mobile-toggle" id="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Vítejte v Pizzerii Roma</h1>
+            <p class="hero-subtitle">Autentická italská pizza připravovaná v peci na dřevo s láskou a tradicí od roku 1993</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i>
+                    Prohlédněte si menu
+                </a>
+                <a href="#order" class="btn btn-secondary">
+                    <i class="fas fa-motorcycle"></i>
+                    Objednat online
+                </a>
+            </div>
+            <div class="hero-features">
+                <div class="feature">
+                    <i class="fas fa-fire"></i>
+                    <span>Pec na dřevo</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-leaf"></i>
+                    <span>Čerstvé ingredience</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <span>Rychlý rozvoz</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Naše speciality</span>
+                <h2 class="section-title">Menu</h2>
+                <p class="section-description">Objevte autentické chutě Itálie připravované podle tradičních receptur</p>
+            </div>
+
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="pizza">
+                    <i class="fas fa-pizza-slice"></i>
+                    Pizzy
+                </button>
+                <button class="category-btn" data-category="pasta">
+                    <i class="fas fa-bacon"></i>
+                    Pasta
+                </button>
+                <button class="category-btn" data-category="salad">
+                    <i class="fas fa-carrot"></i>
+                    Saláty
+                </button>
+                <button class="category-btn" data-category="drink">
+                    <i class="fas fa-wine-glass"></i>
+                    Nápoje
+                </button>
+            </div>
+
+            <div class="menu-grid" id="menu-grid">
+                <!-- Pizza Items -->
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400" alt="Margherita">
+                        <div class="menu-badge">Nejoblíbenější</div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Pizza Margherita</h3>
+                            <span class="menu-price">185 Kč</span>
+                        </div>
+                        <p class="menu-description">Rajčatová omáčka, mozzarella, čerstvá bazalka, olivový olej</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Margherita', 185)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" alt="Quattro Stagioni">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Quattro Stagioni</h3>
+                            <span class="menu-price">225 Kč</span>
+                        </div>
+                        <p class="menu-description">Šunka, žampiony, olivy, artičoky, mozzarella, rajčatová omáčka</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Quattro Stagioni', 225)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" alt="Diavola">
+                        <div class="menu-badge">Pikantní</div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Pizza Diavola</h3>
+                            <span class="menu-price">215 Kč</span>
+                        </div>
+                        <p class="menu-description">Pikantní salám, feferony, mozzarella, rajčatová omáčka</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Diavola', 215)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?w=400" alt="Quattro Formaggi">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Quattro Formaggi</h3>
+                            <span class="menu-price">235 Kč</span>
+                        </div>
+                        <p class="menu-description">Mozzarella, gorgonzola, parmezán, kozí sýr, smetanový základ</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Quattro Formaggi', 235)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=400" alt="Prosciutto e Funghi">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Prosciutto e Funghi</h3>
+                            <span class="menu-price">225 Kč</span>
+                        </div>
+                        <p class="menu-description">Italská šunka, žampiony, mozzarella, rajčatová omáčka</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Prosciutto e Funghi', 225)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="pizza">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400" alt="Vegetariana">
+                        <div class="menu-badge">Vegetariánská</div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Vegetariana</h3>
+                            <span class="menu-price">195 Kč</span>
+                        </div>
+                        <p class="menu-description">Grilovaná zelenina, mozzarella, rajčatová omáčka, čerstvé bylinky</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Vegetariana', 195)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pasta Items -->
+                <div class="menu-item" data-category="pasta" style="display: none;">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400" alt="Spaghetti Carbonara">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Spaghetti Carbonara</h3>
+                            <span class="menu-price">175 Kč</span>
+                        </div>
+                        <p class="menu-description">Slanina, vejce, parmezán, černý pepř</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Spaghetti Carbonara', 175)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="pasta" style="display: none;">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400" alt="Penne Arrabbiata">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Penne Arrabbiata</h3>
+                            <span class="menu-price">165 Kč</span>
+                        </div>
+                        <p class="menu-description">Pikantní rajčatová omáčka, česnek, chilli, petržel</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Penne Arrabbiata', 165)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="pasta" style="display: none;">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400" alt="Tagliatelle Bolognese">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Tagliatelle Bolognese</h3>
+                            <span class="menu-price">185 Kč</span>
+                        </div>
+                        <p class="menu-description">Domácí masová omáčka, parmezán, čerstvé bylinky</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Tagliatelle Bolognese', 185)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salad Items -->
+                <div class="menu-item" data-category="salad" style="display: none;">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Caesar Salad">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Caesar Salad</h3>
+                            <span class="menu-price">145 Kč</span>
+                        </div>
+                        <p class="menu-description">Římský salát, kuřecí prsa, krutony, parmezán, Caesar dresink</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Caesar Salad', 145)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="salad" style="display: none;">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" alt="Caprese">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Caprese</h3>
+                            <span class="menu-price">135 Kč</span>
+                        </div>
+                        <p class="menu-description">Rajčata, mozzarella, bazalka, olivový olej, balsamico</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Caprese', 135)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drink Items -->
+                <div class="menu-item" data-category="drink" style="display: none;">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=400" alt="Aperol Spritz">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Aperol Spritz</h3>
+                            <span class="menu-price">95 Kč</span>
+                        </div>
+                        <p class="menu-description">Aperol, Prosecco, soda, pomeranč</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Aperol Spritz', 95)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="drink" style="display: none;">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400" alt="Espresso">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3>Espresso</h3>
+                            <span class="menu-price">45 Kč</span>
+                        </div>
+                        <p class="menu-description">Italská pražená káva</p>
+                        <div class="menu-actions">
+                            <button class="btn-add" onclick="addToCart('Espresso', 45)">
+                                <i class="fas fa-plus"></i> Přidat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-footer">
+                <a href="#" class="btn btn-outline" onclick="downloadPDF()">
+                    <i class="fas fa-download"></i>
+                    Stáhnout kompletní menu (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-images">
+                    <div class="about-image main">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600" alt="Interiér restaurace">
+                    </div>
+                    <div class="about-image secondary">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400" alt="Příprava pizzy">
+                    </div>
+                    <div class="about-badge">
+                        <span class="years">30+</span>
+                        <span class="text">let tradice</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-subtitle">Naše historie</span>
+                    <h2 class="section-title">Pizzerie Roma</h2>
+                    <p class="about-text">
+                        Od roku 1993 přinášíme do Prahy autentickou chuť Itálie. Naše pizzerie vznikla z lásky k tradiční italské kuchyni a rodinným receptům, které se předávají z generace na generaci.
+                    </p>
+                    <p class="about-text">
+                        Každá pizza je připravována v peci na dřevo, která dosahuje teploty 400°C. Používáme pouze ty nejčerstvější ingredience - rajčata z Kampánie, mozzarellu z bufalího mléka a olivový olej prvního lisování z Toskánska.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Čerstvé lokální ingredience</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Tradiční pec na dřevo</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Italský šéfkuchař</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Ručně připravované těsto</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary">Více o nás</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="specials-section">
+        <div class="container">
+            <div class="section-header light">
+                <span class="section-subtitle">Speciální nabídky</span>
+                <h2 class="section-title">Pizza týdne</h2>
+            </div>
+            <div class="specials-grid">
+                <div class="special-card featured">
+                    <div class="special-badge">-20%</div>
+                    <div class="special-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500" alt="Pizza týdne">
+                    </div>
+                    <div class="special-content">
+                        <h3>Truffle Paradise</h3>
+                        <p class="special-description">Lanýžový olej, čerstvé lanýže, mozzarella, rukola</p>
+                        <div class="special-price">
+                            <span class="old-price">295 Kč</span>
+                            <span class="new-price">236 Kč</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="addToCart('Truffle Paradise', 236)">
+                            <i class="fas fa-plus"></i> Objednat
+                        </button>
+                    </div>
+                </div>
+                <div class="special-card">
+                    <div class="special-image">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400" alt="Menu pro 2">
+                    </div>
+                    <div class="special-content">
+                        <h3>Menu pro dva</h3>
+                        <p class="special-description">2 pizzy + 2 nápoje + dezert</p>
+                        <div class="special-price">
+                            <span class="new-price">499 Kč</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="addToCart('Menu pro dva', 499)">
+                            <i class="fas fa-plus"></i> Vybrat
+                        </button>
+                    </div>
+                </div>
+                <div class="special-card">
+                    <div class="special-image">
+                        <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400" alt="Rodinné menu">
+                    </div>
+                    <div class="special-content">
+                        <h3>Rodinné menu</h3>
+                        <p class="special-description">3 pizzy + 4 nápoje + 2 dezerty</p>
+                        <div class="special-price">
+                            <span class="new-price">799 Kč</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="addToCart('Rodinné menu', 799)">
+                            <i class="fas fa-plus"></i> Vybrat
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Co o nás říkají</span>
+                <h2 class="section-title">Recenze</h2>
+            </div>
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Nejlepší pizza v Praze! Těsto je dokonale tenké a křupavé, ingredience vždy čerstvé. Atmosféra restaurace je úžasná, cítíte se jako v Itálii."</p>
+                    <div class="review-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Petra">
+                        <div class="review-info">
+                            <h4>Petra Nováková</h4>
+                            <span>⭐⭐⭐⭐⭐ Google</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Objednáváme pravidelně rozvoz a pizza vždy dorazí horká a perfektní. Quattro Formaggi je naše oblíbená! Doporučuji všem milovníkům italské kuchyně."</p>
+                    <div class="review-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jan">
+                        <div class="review-info">
+                            <h4>Jan Svoboda</h4>
+                            <span>⭐⭐⭐⭐⭐ TripAdvisor</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">"Skvělá rodinná atmosféra a profesionální obsluha. Pizza je autentická, jako byste byli v Neapoli. Určitě se vrátíme!"</p>
+                    <div class="review-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Marie">
+                        <div class="review-info">
+                            <h4>Marie Dvořáková</h4>
+                            <span>⭐⭐⭐⭐⭐ Facebook</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="reservation-section">
+        <div class="container">
+            <div class="reservation-wrapper">
+                <div class="reservation-content">
+                    <span class="section-subtitle">Rezervace</span>
+                    <h2 class="section-title">Rezervujte si stůl</h2>
+                    <p>Zarezervujte si místo v naší restauraci a užijte si autentickou italskou atmosféru</p>
+                    <div class="reservation-info">
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+420 123 456 789</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>rezervace@pizzerieroma.cz</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Po-Ne: 11:00 - 23:00</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="reservation-form" id="reservation-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Jméno</label>
+                            <input type="text" id="name" name="name" required placeholder="Vaše jméno">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+420 ...">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Datum</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Čas</label>
+                            <input type="time" id="time" name="time" required min="11:00" max="22:00">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Počet hostů</label>
+                        <select id="guests" name="guests" required>
+                            <option value="">Vyberte počet</option>
+                            <option value="1">1 osoba</option>
+                            <option value="2">2 osoby</option>
+                            <option value="3">3 osoby</option>
+                            <option value="4">4 osoby</option>
+                            <option value="5">5 osob</option>
+                            <option value="6">6 osob</option>
+                            <option value="more">Více než 6</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="note">Poznámka</label>
+                        <textarea id="note" name="note" rows="3" placeholder="Speciální požadavky, alergie..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-calendar-check"></i>
+                        Potvrdit rezervaci
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order/Cart Section -->
+    <section id="order" class="order-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Online objednávka</span>
+                <h2 class="section-title">Váš košík</h2>
+            </div>
+            <div class="order-wrapper">
+                <div class="cart-container" id="cart-container">
+                    <div class="cart-empty" id="cart-empty">
+                        <i class="fas fa-shopping-basket"></i>
+                        <p>Váš košík je prázdný</p>
+                        <a href="#menu" class="btn btn-primary">Přejít do menu</a>
+                    </div>
+                    <div class="cart-items" id="cart-items" style="display: none;">
+                        <!-- Cart items will be added here dynamically -->
+                    </div>
+                </div>
+                <div class="order-summary" id="order-summary" style="display: none;">
+                    <h3>Souhrn objednávky</h3>
+                    <div class="summary-row">
+                        <span>Mezisoučet:</span>
+                        <span id="subtotal">0 Kč</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Doprava:</span>
+                        <span id="delivery">50 Kč</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Celkem:</span>
+                        <span id="total">0 Kč</span>
+                    </div>
+                    <div class="delivery-options">
+                        <label class="delivery-option">
+                            <input type="radio" name="delivery" value="pickup" checked>
+                            <span class="option-content">
+                                <i class="fas fa-store"></i>
+                                <span>Osobní odběr</span>
+                            </span>
+                        </label>
+                        <label class="delivery-option">
+                            <input type="radio" name="delivery" value="delivery">
+                            <span class="option-content">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>Rozvoz (+50 Kč)</span>
+                            </span>
+                        </label>
+                    </div>
+                    <button class="btn btn-primary btn-full" onclick="checkout()">
+                        <i class="fas fa-credit-card"></i>
+                        Pokračovat k platbě
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Kontakt</span>
+                <h2 class="section-title">Kde nás najdete</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Adresa</h3>
+                        <p>Jugoslávská 17/6<br>120 00 Praha 2 - Vinohrady</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Telefon</h3>
+                        <p>+420 123 456 789<br>+420 987 654 321</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>info@pizzerieroma.cz<br>rezervace@pizzerieroma.cz</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Otevírací doba</h3>
+                        <p>Po-Ne: 11:00 - 23:00<br>Rozvoz: 10:00 - 22:00</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tripadvisor"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-google"></i></a>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.0!2d14.44!3d50.08!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDA0JzQ4LjAiTiAxNMKwMjYnMjQuMCJF!5e0!3m2!1scs!2scz!4v1234567890"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-pizza-slice"></i>
+                        <span>Pizzerie Roma</span>
+                    </a>
+                    <p>Autentická italská pizza připravovaná s láskou a tradicí od roku 1993.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Rychlé odkazy</h4>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">O nás</a></li>
+                        <li><a href="#reviews">Recenze</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Služby</h4>
+                    <ul>
+                        <li><a href="#order">Online objednávky</a></li>
+                        <li><a href="#reservation">Rezervace</a></li>
+                        <li><a href="#">Rozvoz</a></li>
+                        <li><a href="#">Catering</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Odběr novinek</h4>
+                    <p>Buďte informováni o novinkách a speciálních nabídkách</p>
+                    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                        <input type="email" placeholder="Váš email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Pizzerie Roma. Všechna práva vyhrazena.</p>
+                <div class="footer-legal">
+                    <a href="#">Obchodní podmínky</a>
+                    <a href="#">Ochrana osobních údajů</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCartModal()">&times;</span>
+            <h2>Košík</h2>
+            <div id="modal-cart-items"></div>
+            <div class="modal-total">
+                <span>Celkem:</span>
+                <span id="modal-total-price">0 Kč</span>
+            </div>
+            <button class="btn btn-primary btn-full" onclick="proceedToCheckout()">
+                Pokračovat k objednávce
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Položka přidána do košíku</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
